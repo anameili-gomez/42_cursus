@@ -1,0 +1,3 @@
+# get_next_line
+
+C function returning with each call the content of a file passed as an argument line by line, or NULL in case of error, or the file was completely read. It will use the `read` function, reading a specific number of characters until a new line is found. It can be compiled defining the number of characters read with `BUFFER_SIZE=42`, but it will use 42 as BUFFER_SIZE if not specified. Very usefull for the interpretation of inputs, and was also added to the `libft` custom library. It aims to introduce the static functions, as well as the memory leak management. This project doesn't contain a Makefile, but has two sets of files, as the bonus will be able to manage multiple files at the same time.

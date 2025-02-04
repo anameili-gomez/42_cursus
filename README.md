@@ -1,14 +1,14 @@
 # 42 Cursus
 
-Hi! I'm Ana Gómez, a student at 42 Urduliz. Here, we learn programming through projects and peer-to-peer collaboration and evaluation. This is my progress in the cursus.
+Hi! I'm Ana Gómez, a student at 42 Urduliz. Here, we learn programming through projects and peer-to-peer collaboration and evaluation. We mainly focus on C. This is my progress in the cursus.
 
-|  D   | Ring | Project | 
-| ---   | -----  | ---------  |
-| ✅  |  00   | Libft |
-| ✅  |  01   | ft_printf |
-| ✅  |  01   | Get_next_line |
-| ✅  |  02   | Push_swap |
-| ✅  |  02   | pipex |
-| ✅  |  02   | FdF |
-| ⏳  |  03   | Philosophers |
-| ⏳  |  03   | minishell |
+|  D  | Grade | Level |    Project    | Description |
+| --- | ----- | ----- | ------------- | ----------- |
+| ✅  |  125  |  00   | Libft         | C library, containing imitations of different libc functions, and some custom ones |
+| ✅  |  100  |  01   | ft_printf     | Replica of the C function printf |
+| ✅  |  125  |  01   | get_next_line | C function returning with each call the content of a file passed as an argument line by line |
+| ✅  |  90   |  02   | Push_swap     | Sorting algorithm in C |
+| ✅  |  125  |  02   | pipex         | Replica in C of the shell pipes |
+| ✅  |  120  |  02   | FdF           | 3D representation of landscape maps |
+| ⏳  |  __   |  03   | Philosophers  | Simulation of the dining philosophers problem, using threads and mutexes |
+| ⏳  |  __   |  03   | minishell     | Simple imitation of a shell in C |
