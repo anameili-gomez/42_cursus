@@ -4,9 +4,9 @@ Hi! I'm Ana Gómez, a student at 42 Urduliz. Here, we learn programming through 
 
 |  D  | Grade | Level |    Project    | Description |
 | --- | ----- | ----- | ------------- | ----------- |
-| ✅  |  125  |  00   | [Libft](https://github.com/anameili-gomez/42_cursus/tree/main/00%20Libft)         | C library, containing imitations of different libc functions, and some custom ones |
-| ✅  |  100  |  01   | [ft_printf](https://github.com/anameili-gomez/42_cursus/tree/main/01%20ft_printf)     | Replica of the C function printf |
-| ✅  |  125  |  01   | [get_next_line](https://github.com/anameili-gomez/42_cursus/tree/main/01%20get_next_line) | C function returning with each call the content of a file passed as an argument line by line |
+| ✅  |  125  |  00   | [Libft](https://github.com/anameili-gomez/42_cursus/tree/main/00%20Libft#libft)         | C library, containing imitations of different libc functions, and some custom ones |
+| ✅  |  100  |  01   | [ft_printf](https://github.com/anameili-gomez/42_cursus/tree/main/01%20ft_printf#ft_printf)     | Replica of the C function printf |
+| ✅  |  125  |  01   | [get_next_line](https://github.com/anameili-gomez/42_cursus/tree/main/01%20get_next_line#get_next_line) | C function returning with each call the content of a file passed as an argument line by line |
 | ✅  |  90   |  02   | push_swap     | Sorting algorithm in C |
 | ✅  |  125  |  02   | pipex         | Replica in C of the shell pipes |
 | ✅  |  120  |  02   | FdF           | 3D representation of landscape maps |
