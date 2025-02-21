@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagomez <anagomez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anagomez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 17:29:53 by anagomez          #+#    #+#             */
-/*   Updated: 2025/02/04 15:47:13 by anagomez         ###   ########.fr       */
+/*   Updated: 2024/12/27 13:55:40 by anagomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	free_points(t_point **points, int n)
 	i = 0;
 	if (!points || points[0])
 		return ;
-	while (i <= n)
+	while (i < n)
 		free(points[i++]);
 	free(points);
 }

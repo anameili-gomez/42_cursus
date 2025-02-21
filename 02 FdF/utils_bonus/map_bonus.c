@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagomez <anagomez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anagomez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:45:04 by anagomez          #+#    #+#             */
-/*   Updated: 2025/02/04 15:46:42 by anagomez         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:45:06 by anagomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ t_map	get_map(char *file)
 	map.alpha = 0.785398;
 	map.beta = 0.61548;
 	map.points = get_points(map.depth, map.width, lst);
-	scaling_and_centering(&map);
+	scaling_and_centering(&map, 0);
 	return (map);
 }

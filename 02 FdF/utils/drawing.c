@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagomez <anagomez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anagomez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 14:45:58 by anagomez          #+#    #+#             */
-/*   Updated: 2025/02/04 15:47:03 by anagomez         ###   ########.fr       */
+/*   Updated: 2024/12/27 14:46:00 by anagomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ void	create_image(mlx_image_t *img, t_map *map, float angle)
 	i = -1;
 	map->angle = angle;
 	convert_to_2d(map);
-	while (++i < map->depth - 1)
+	while (++i < map->depth - 2)
 	{
 		j = -1;
-		while (++j < map->width - 1)
+		while (++j < map->width - 2)
 		{
 			draw_line(img, &map->points[i][j], &map->points[i][j + 1]);
 			draw_line(img, &map->points[i][j], &map->points[i + 1][j]);
@@ -102,6 +102,6 @@ void	create_image(mlx_image_t *img, t_map *map, float angle)
 		draw_line(img, &map->points[i][j], &map->points[i + 1][j]);
 	}
 	j = -1;
-	while (++j < map->width - 1)
+	while (++j < map->width - 2)
 		draw_line(img, &map->points[i][j], &map->points[i][j + 1]);
 }

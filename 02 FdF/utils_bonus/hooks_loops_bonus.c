@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_loops_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagomez <anagomez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anagomez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 18:52:36 by anagomez          #+#    #+#             */
-/*   Updated: 2025/02/04 16:20:54 by anagomez         ###   ########.fr       */
+/*   Updated: 2025/01/17 18:52:37 by anagomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ static void	rotation_hook(mlx_key_data_t keydata, void *param)
 
 	data = param;
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_REPEAT)
-		data->map->beta += 0.1;
+		data->map->beta += 0.05;
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_REPEAT)
-		data->map->beta -= 0.1;
+		data->map->beta -= 0.05;
 	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_REPEAT)
-		data->map->alpha -= 0.1;
+		data->map->alpha -= 0.05;
 	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_REPEAT)
-		data->map->alpha += 0.1;
+		data->map->alpha += 0.05;
 }
 
 static void	translation_hook(mlx_key_data_t keydata, void *param)
@@ -83,6 +83,14 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	data = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		close_window(param);
+	else if (keydata.key == MLX_KEY_R && keydata.action == MLX_PRESS)
+	{
+		clear_image(data->img, data->img->height, data->img->width);
+		scaling_and_centering(data->map, 1);
+		draw_image(data->img, data->map);
+		if (mlx_image_to_window(data->mlx, data->img, 0, 0) < 0)
+			ft_exit("Image to window error", data, data->map, 1);
+	}
 	else if (keydata.action == MLX_REPEAT)
 	{
 		rotation_hook(keydata, param);

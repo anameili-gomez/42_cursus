@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagomez <anagomez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anagomez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:46:16 by anagomez          #+#    #+#             */
-/*   Updated: 2025/02/04 19:58:19 by anagomez         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:46:17 by anagomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct s_data
 int			get_width(char **points);
 t_point		**get_points(int depth, int width, t_file *lst);
 void		get_colors(t_point *point, char *color);
-void		scaling_and_centering(t_map *map);
+void		scaling_and_centering(t_map *map, int when);
 void		find_max_and_min(t_map *map);
 t_map		get_map(char *file);
 

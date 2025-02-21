@@ -37,11 +37,11 @@ OBJ_BONUS = $(SRC_BONUS:.c=.o)
 all: MLX $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBS) $(MLX_HEADERS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBS) $(MLX_HEADERS) -o $(NAME) -lm
 	clear
 
 bonus: MLX $(LIBFT) $(OBJ_BONUS)
-	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBS) $(MLX_HEADERS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBS) $(MLX_HEADERS) -o $(NAME) -lm
 	clear
 
 $(LIBFT):

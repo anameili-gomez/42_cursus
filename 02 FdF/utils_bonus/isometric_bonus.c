@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   isometric_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagomez <anagomez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anagomez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:52:01 by anagomez          #+#    #+#             */
-/*   Updated: 2025/02/04 15:46:38 by anagomez         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:11:32 by anagomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,18 @@ static void	centering(t_map *map)
 	redo_iso(map, 0);
 }
 
-void	scaling_and_centering(t_map *map)
+void	scaling_and_centering(t_map *map, int when)
 {
 	int	i;
 	int	j;
 
-	scaling1(map, map->width, map->depth);
+	if (when == 0)
+		scaling1(map, map->width, map->depth);
+	else
+	{
+		map->alpha = 0.785398;
+		map->beta = 0.61548;
+	}
 	i = -1;
 	while (++i < map->depth)
 	{
