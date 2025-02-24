@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   children_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagomez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anagomez <anagomez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 12:48:52 by anagomez          #+#    #+#             */
-/*   Updated: 2024/11/29 12:48:54 by anagomez         ###   ########.fr       */
+/*   Updated: 2025/02/24 16:24:33 by anagomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	heredoc_input(char *limiter)
 		exit_message(2, NULL);
 	while (1)
 	{
+		ft_printf("here_doc > ");
 		input = get_next_line(0);
 		input[ft_strlen(input) - 1] = '\0';
 		if (ft_strlen(input) == len && ft_strncmp(input, limiter, len) == 0)

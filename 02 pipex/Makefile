@@ -2,7 +2,7 @@ NAME = pipex
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra $(HEADERS)
-HEADERS = -I"../01 get_next_line" -I"../00 Libft"
+HEADERS = -I"../01 get_next_line" -I"../01 ft_printf" -I"../00 Libft"
 
 LIBFT_DIR = ../00\ Libft
 LIBFT = $(LIBFT_DIR)/libft.a
