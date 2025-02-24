@@ -1,6 +1,6 @@
 # Fdf
 
-`Fdf` is a program that interprets a map provided as a parameter. The map is represented by a matrix where each number corresponds to a height value. The program generates a 3D visualization of the map in a separate window. You can close the window by clicking the "X" button or pressing the `ESC` key.
+`Fdf` is a program that interprets a map provided as a parameter. The map is represented by a matrix where each number corresponds to a height value. The program generates a 3D visualization of the isometric projection of the map in a separate window. You can close the window by clicking the "X" button or pressing the `ESC` key.
 
 ## Bonus
 
@@ -9,6 +9,7 @@ The `bonus` rule compiles an enhanced version of the `fdf` program with addition
 - **Mouse Scroll**: Zoom in and out.
 - **W, A, S, D Keys**: Move the map view.
 - **Arrow Keys**: Rotate the map.
+- **R Key**: Reset the map to default view.
 
 These interactive controls allow for a more dynamic and immersive exploration of the 3D representation.
 

@@ -1,6 +1,6 @@
 # 42 Cursus
 
-Hi! I'm Ana Gómez, a student at 42 Urduliz. Here, we learn programming through projects and peer-to-peer collaboration and evaluation. We mainly focus on C. This is my progress in the cursus.<br><br>
+Hi! I'm **Ana Gómez**, a student at **42 Urduliz**. Here, we learn programming through projects and peer-to-peer collaboration. This repository contains my progress in the **42 Cursus**, where we mainly focus on the **C programming language**. Each project tackles different aspects of system programming, algorithms, and low-level development.<br><br>
 
 |  D  | Grade | Level |    Project    | Description |
 | --- | ----- | ----- | ------------- | ----------- |

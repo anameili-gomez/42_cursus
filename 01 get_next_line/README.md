@@ -1,3 +1,25 @@
 # get_next_line
 
-C function returning with each call the content of a file passed as an argument line by line, or NULL in case of error, or the file was completely read. It will use the `read` function, reading a specific number of characters until a new line is found. It can be compiled defining the number of characters read with `BUFFER_SIZE=xx`, but it will use 42 as BUFFER_SIZE if not specified. Very usefull for the interpretation of inputs, and was also added to the `libft` custom library. It aims to introduce the static variables, as well as the memory leak management. This project doesn't contain a Makefile, but has two sets of files, as the bonus will be able to manage multiple files at the same time.
+`get_next_line` is a C function that reads a file **line by line** each time it is called. It returns:
+
+- The next line from the file.
+- `NULL` if an error occurs or the end of the file is reached.
+
+## How it works
+
+- The function uses the `read` system call, reading a specified number of characters at a time until a newline (`\n`) is found.
+- The number of characters read at once is controlled by BUFFER_SIZE.
+ - You can define BUFFER_SIZE during compilation:
+```
+gcc -D BUFFER_SIZE=xx get_next_line.c get_next_line_utils.c
+```
+ - If not specified, it defaults to 42.
+
+## Purpose & Features
+- Introduces **static variables** for persistent data storage between function calls.
+- Focuses on **memory management** to prevent leaks.
+- Also included in the custom libft library for reuse in other projects.
+
+## Bonus Version
+- The bonus implementation supports reading **multiple files** simultaneously.
+- Since `get_next_line` is a single function, the project does not include a Makefile but provides two sets of source files for standard and bonus functionality.
