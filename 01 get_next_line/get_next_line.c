@@ -5,48 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anagomez <anagomez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 12:26:06 by anagomez          #+#    #+#             */
-/*   Updated: 2025/02/04 13:21:25 by anagomez         ###   ########.fr       */
+/*   Created: 2025/02/24 14:42:17 by anagomez          #+#    #+#             */
+/*   Updated: 2025/02/24 16:21:58 by anagomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_resetstash(char *stash, size_t n)
+static char	*get_stash(int fd, char *stash)
 {
-	char	*new_stash;
-	size_t	i;
+	char	*buffer;
+	ssize_t	bytes_read;
 
-	i = 0;
-	if (!stash || stash[n] == '\0')
-	{
-		free(stash);
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
 		return (NULL);
-	}
-	new_stash = (char *)malloc(sizeof(char) * (gnl_strlen(stash) - n));
-	if (!new_stash)
+	while (!line_found(stash))
 	{
-		free(stash);
-		return (NULL);
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read <= 0)
+		{
+			if (!stash || !stash[0])
+			{
+				free(stash);
+				free(buffer);
+				stash = NULL;
+				return (NULL);
+			}
+			break ;
+		}
+		buffer[bytes_read] = '\0';
+		stash = gnl_strjoin(stash, buffer);
 	}
-	n++;
-	while (stash[n])
-		new_stash[i++] = stash[n++];
-	new_stash[i] = '\0';
-	free (stash);
-	return (new_stash);
+	free(buffer);
+	return (stash);
 }
 
-char	*stash_to_line(char *stash)
+static char	*find_line(char *stash)
 {
 	char	*line;
-	size_t	length;
-	size_t	i;
+	int		i;
 
-	if (stash[0] == '\0')
+	if (!stash || !stash[0])
 		return (NULL);
-	length = ft_line_length(stash);
-	line = (char *)malloc(sizeof(char) * length + 2);
+	i = 0;
+	while (stash[i] && stash[i] != '\n')
+		i++;
+	if (stash[i] == '\n')
+		i++;
+	line = (char *)malloc(i + 1);
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -56,68 +63,38 @@ char	*stash_to_line(char *stash)
 		i++;
 	}
 	if (stash[i] == '\n')
-	{
-		line[i] = stash[i];
-		i++;
-	}
+		line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }
 
-char	*rl_to_stash(char *read_line, char *stash)
+static char	*redo_stash(char *stash)
 {
 	char	*new_stash;
-	size_t	space;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 
+	if (!stash)
+		return (NULL);
 	i = 0;
 	j = 0;
-	if (!read_line || !stash)
+	while (stash[i] && stash[i] != '\n')
+		i++;
+	if (stash[i] == '\n')
+		i++;
+	if (!stash[i])
+	{
+		free(stash);
 		return (NULL);
-	space = gnl_strlen(read_line) + gnl_strlen(stash) + 1;
-	new_stash = (char *)malloc((sizeof (char)) * space);
+	}
+	new_stash = (char *)malloc(gnl_strlen(stash) - i + 1);
 	if (!new_stash)
 		return (NULL);
 	while (stash[i])
-	{
-		new_stash[i] = stash[i];
-		i++;
-	}
-	while (read_line[j])
-		new_stash[i++] = read_line[j++];
-	new_stash[i] = '\0';
+		new_stash[j++] = stash[i++];
+	new_stash[j] = '\0';
 	free(stash);
 	return (new_stash);
-}
-
-char	*read_to_stash(int fd, char *stash)
-{
-	char	*read_line;
-	ssize_t	read_bytes;
-
-	if (!stash)
-		stash = ft_get_new_stash();
-	read_line = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!read_line || !stash)
-		return (NULL);
-	read_bytes = 1;
-	while (read_bytes > 0)
-	{
-		read_bytes = read(fd, read_line, BUFFER_SIZE);
-		if (read_bytes == -1)
-		{
-			free(stash);
-			free(read_line);
-			return (NULL);
-		}
-		read_line[read_bytes] = '\0';
-		stash = rl_to_stash(read_line, stash);
-		if (!stash || ft_line_control(read_line) == 1)
-			break ;
-	}
-	free(read_line);
-	return (stash);
 }
 
 char	*get_next_line(int fd)
@@ -130,10 +107,10 @@ char	*get_next_line(int fd)
 		free(stash);
 		return (NULL);
 	}
-	stash = read_to_stash(fd, stash);
+	stash = get_stash(fd, stash);
 	if (!stash)
 		return (NULL);
-	line = stash_to_line(stash);
-	stash = ft_resetstash(stash, ft_line_length(stash));
+	line = find_line(stash);
+	stash = redo_stash(stash);
 	return (line);
 }

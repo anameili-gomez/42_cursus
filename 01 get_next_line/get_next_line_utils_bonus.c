@@ -5,51 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anagomez <anagomez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 12:26:31 by anagomez          #+#    #+#             */
-/*   Updated: 2025/02/04 13:20:56 by anagomez         ###   ########.fr       */
+/*   Created: 2025/02/24 15:24:31 by anagomez          #+#    #+#             */
+/*   Updated: 2025/02/24 16:21:36 by anagomez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-size_t	gnl_strlen(const char *s)
+size_t	gnl_strlen(char *str)
 {
 	size_t	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	if (!str)
+		return (0);
+	while (str[i])
 		i++;
 	return (i);
 }
 
-size_t	ft_line_length(char *stash)
+char	*gnl_strjoin(char *s1, char *s2)
 {
-	size_t	i;
+	char	*new_stash;
+	int		i;
+	int		j;
 
-	i = 0;
-	while (stash[i] && stash[i] != '\n')
-		i++;
-	return (i);
-}
-
-int	ft_line_control(char *stash)
-{
-	while (*stash != '\0')
+	if (!s1)
 	{
-		if (*stash == '\n')
+		s1 = malloc(1);
+		s1[0] = '\0';
+	}
+	if (!s2)
+		return (s1);
+	new_stash = (char *)malloc(gnl_strlen(s1) + gnl_strlen(s2) + 1);
+	if (!new_stash)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i])
+		new_stash[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		new_stash[j++] = s2[i++];
+	new_stash[j] = '\0';
+	free(s1);
+	return (new_stash);
+}
+
+int	line_found(char *stash)
+{
+	int	i;
+
+	i = 0;
+	if (!stash)
+		return (0);
+	while (stash[i])
+	{
+		if (stash[i] == '\n')
 			return (1);
-		stash++;
+		i++;
 	}
 	return (0);
-}
-
-char	*ft_get_new_stash(void)
-{
-	char	*stash;
-
-	stash = (char *)malloc(sizeof(char) * 1);
-	if (!stash)
-		return (NULL);
-	stash[0] = '\0';
-	return (stash);
 }
